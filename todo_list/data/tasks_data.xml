@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    
+    <record id="task_website_development" model="todo.task">
+        <field name="name">Website Development</field>
+        <field name="description">Develop a new company website with modern design and responsive layout. Include contact forms and integration with CRM system.</field>
+        <field name="employee_id" ref="todo_employee_john"/>
+        <field name="due_date">2024-02-15</field>
+        <field name="status">in_progress</field>
+        <field name="estimated_time">40.0</field>
+        <field name="is_overdue">False</field>
+    </record>
+
+  
+    <record id="task_employee_onboarding" model="todo.task">
+        <field name="name">Employee Onboarding Process</field>
+        <field name="description">Create and implement a comprehensive employee onboarding program. Include orientation materials, training schedules, and feedback collection.</field>
+        <field name="employee_id" ref="todo_employee_jane"/>
+        <field name="due_date">2024-01-30</field>
+        <field name="status">new</field>
+        <field name="estimated_time">25.0</field>
+        <field name="is_overdue">False</field>
+    </record>
+
+   
+    <record id="task_database_migration" model="todo.task">
+        <field name="name">Database Migration</field>
+        <field name="description">Migrate legacy database to new cloud-based system. Ensure data integrity and minimal downtime during transition.</field>
+        <field name="employee_id" ref="todo_employee_john"/>
+        <field name="due_date">2024-01-20</field>
+        <field name="status">completed</field>
+        <field name="estimated_time">60.0</field>
+        <field name="is_overdue">False</field>
+    </record>
+</odoo>

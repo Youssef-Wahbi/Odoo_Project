@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sample Employees -->
+        <record id="employee_1" model="real.estate.employee">
+            <field name="name">John Smith</field>
+            <field name="employee_id">EMP001</field>
+            <field name="email">john.smith@realestate.com</field>
+            <field name="phone">+1-310-555-0101</field>
+            <field name="position">agent</field>
+            <field name="department">sales</field>
+            <field name="hire_date">2020-03-15</field>
+            <field name="salary">75000</field>
+        </record>
+
+        <record id="employee_2" model="real.estate.employee">
+            <field name="name">Sarah Johnson</field>
+            <field name="employee_id">EMP002</field>
+            <field name="email">sarah.johnson@realestate.com</field>
+            <field name="phone">+1-213-555-0202</field>
+            <field name="position">manager</field>
+            <field name="department">management</field>
+            <field name="hire_date">2019-08-22</field>
+            <field name="salary">85000</field>
+            <field name="manager_id" ref="employee_1"/>
+        </record>
+
+        <record id="employee_3" model="real.estate.employee">
+            <field name="name">Michael Chen</field>
+            <field name="employee_id">EMP003</field>
+            <field name="email">michael.chen@realestate.com</field>
+            <field name="phone">+1-818-555-0303</field>
+            <field name="position">broker</field>
+            <field name="department">sales</field>
+            <field name="hire_date">2021-01-10</field>
+            <field name="salary">95000</field>
+            <field name="manager_id" ref="employee_1"/>
+        </record>
+
+        <!-- Sample Property -->
+        <record id="property_1" model="property">
+            <field name="name">Beverly Hills Luxury Villa</field>
+            <field name="description">Beautiful 4-bedroom villa with pool and garden.</field>
+            <field name="postcode">90210</field>
+            <field name="expected_price">2500000</field>
+            <field name="bedrooms">4</field>
+            <field name="living_area">300</field>
+            <field name="garden">true</field>
+            <field name="garden_area">500</field>
+            <field name="garage">true</field>
+            <field name="state">pending</field>
+            <field name="agent_id" ref="employee_1"/>
+            <field name="image">YOUR_BASE64_STRING_HERE_FOR_VILLA</field>
+        </record>
+    </data>
+</odoo> 

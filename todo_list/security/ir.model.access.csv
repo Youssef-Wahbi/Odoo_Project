@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_todo_task,todo.task,model_todo_task,,1,1,1,1
+access_todo_task_timesheet,todo.task.timesheet,model_todo_task_timesheet,,1,1,1,1
+access_todo_employee,todo.employee,model_todo_employee,,1,1,1,1
+access_bulk_task_assignment_wizard,bulk.task.assignment.wizard,model_bulk_task_assignment_wizard,,1,1,1,1
+access_todo_task_user,todo.task user,model_todo_task,group_todo_user,1,0,0,0
+access_todo_task_manager,todo.task manager,model_todo_task,group_todo_manager,1,1,1,1
+access_todo_employee_user,todo.employee user,model_todo_employee,group_todo_user,1,0,0,0
+access_user_workload,user.workload,model_user_workload,,1,1,1,1

@@ -1,0 +1,45 @@
+<odoo>
+    
+  
+    
+    
+
+    
+     <record id="action_todo_employee" model="ir.actions.act_window">
+        <field name="name">Employees</field>
+        <field name="res_model">todo.employee</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first employee!
+            </p>
+            <p>
+                Employees can be assigned to tasks and managed through this interface.
+            </p>
+        </field>
+    </record>
+
+     
+
+    
+    <menuitem id="menu_todo_root" name="To-Do" sequence="1"  web_icon="todo_list,static/description/to.png"/>
+
+    
+              <menuitem id="menu_todo_workload"
+              name="Workload Chart"
+              parent="menu_todo_root"
+              action="action_user_workload"/>
+
+              <menuitem id="menu_todo_employees"
+              name="Employees"
+              parent="menu_todo_root"
+              action="action_todo_employee"/>
+
+             
+    
+    
+
+
+    
+</odoo>

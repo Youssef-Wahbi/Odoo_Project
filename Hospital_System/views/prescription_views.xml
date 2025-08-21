@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hospital_prescription_tree" model="ir.ui.view">
+        <field name="name">hospital.prescription.tree</field>
+        <field name="model">hospital.prescription</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="date_prescribed"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_prescription_form" model="ir.ui.view">
+        <field name="name">hospital.prescription.form</field>
+        <field name="model">hospital.prescription</field>
+        <field name="arch" type="xml">
+            <form>
+                <div name="button_box">
+                    <button name="action_open_patient" type="object" string="Patient" icon="fa-user" invisible="not patient_id"/>
+                    <button name="action_open_doctor" type="object" string="Doctor" icon="fa-user-md" invisible="not doctor_id"/>
+                </div>
+                <header>
+                    <field name="date_prescribed"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>
+                    <button name="action_confirm" type="object" string="Confirm" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_done" type="object" string="Mark as Done" class="btn-success" invisible="state != 'confirmed'"/>
+                    <button name="action_reset_draft" type="object" string="Reset to Draft" class="btn-secondary" invisible="state != 'done'"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Prescription: <field name="name"/></h1>
+                    </div>
+                    <group col="2">
+                        <group string="Patient &amp; Doctor">
+                            <field name="patient_id"/>
+                            <field name="doctor_id" readonly="1"/>
+                            <field name="treatment_id"/>
+                        </group>
+                        <group string="Extras">
+                            <!-- <field name="medication"/> -->
+                            <field name="notes"/>
+                        </group>
+                    </group>
+                    <group string="Medicine Lines">
+                        <field name="medicine_line_ids">
+                            <tree>
+                                <field name="medicine_id"/>
+                                <field name="price"/>
+                                <field name="dosage"/>
+                                <field name="duration"/>
+                                <!-- <field name="notes"/> -->
+                            </tree>
+                        </field>
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_prescription" model="ir.actions.act_window">
+        <field name="name">Prescriptions</field>
+        <field name="res_model">hospital.prescription</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

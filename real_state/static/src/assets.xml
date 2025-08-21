@@ -1,0 +1,16 @@
+<odoo>
+  <template id="real_state_tag_style" inherit_id="web.assets_backend" name="Fix M2M Tags Cut Off">
+    <xpath expr="." position="inside">
+      <style type="text/css">
+        .o_field_many2many_tags .badge {
+          font-size: 13px !important;
+          line-height: 20px !important;
+          padding: 6px 10px !important;
+          height: auto !important;
+          display: inline-flex !important;
+          align-items: center !important;
+        }
+      </style>
+    </xpath>
+  </template>
+</odoo>

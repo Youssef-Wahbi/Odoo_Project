@@ -1,0 +1,17 @@
+<odoo>
+
+<record id="seq_todo_task_ref" model="ir.sequence">
+    <field name="name">Task Reference</field>
+    <field name="code">todo_task_seq</field>
+    <field name="prefix">TASK/</field>
+    <field name="padding">4</field>
+</record>
+
+<record id="seq_todo_employee_ref" model="ir.sequence">
+    <field name="name">Employee Reference</field>
+    <field name="code">todo.employee_seq</field>
+    <field name="prefix">EMP/</field>
+    <field name="padding">4</field>
+</record>
+
+</odoo> 

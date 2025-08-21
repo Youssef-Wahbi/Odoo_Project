@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hospital_treatment_tree" model="ir.ui.view">
+        <field name="name">hospital.treatment.tree</field>
+        <field name="model">hospital.treatment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="cost"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_treatment_form" model="ir.ui.view">
+        <field name="name">hospital.treatment.form</field>
+        <field name="model">hospital.treatment</field>
+        <field name="arch" type="xml">
+            <form>
+                <div name="button_box">
+                    <button name="action_open_patient" type="object" string="Patient" icon="fa-user" invisible="not patient_id"/>
+                    <button name="action_open_doctor" type="object" string="Doctor" icon="fa-user-md" invisible="not doctor_id"/>
+                </div>
+                <header>
+                    <field name="active" invisible="1"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done" clickable="1"/>
+                    <button name="action_confirm" type="object" string="Confirm" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_done" type="object" string="Mark as Done" class="btn-success" invisible="state != 'confirmed'"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Treatment: <field name="name"/></h1>
+                    </div>
+                    <group col="2">
+                        <group string="Details">
+                            <field name="description"/>
+                            <field name="cost"/>
+                            
+                            <field name="date"/>
+                        </group>
+                        <group string="Medical">
+                            <field name="patient_id"/>
+                            <field name="doctor_id" readonly="1"/>
+                            <!-- <field name="active"/>
+                            <field name="state"/> -->
+                        </group>
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_treatment" model="ir.actions.act_window">
+        <field name="name">Treatments</field>
+        <field name="res_model">hospital.treatment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,59 @@
+<odoo>
+    <!-- Top level menu -->
+    <menuitem id="menu_hospital_management" 
+              name="Hospital Management" 
+              sequence="1"/>
+
+    <!-- Medical Staff menu and sub-menus -->
+    <menuitem id="menu_medical_staff" 
+              name="Medical Staff" 
+              parent="menu_hospital_management" 
+              sequence="2"/>
+
+    <menuitem id="menu_doctor" 
+              name="Doctor" 
+              parent="menu_medical_staff" 
+              action="Hospital_System.action_hospital_doctor" 
+              sequence="3"/>
+
+    <menuitem id="menu_nurse" 
+              name="Nurse" 
+              parent="menu_medical_staff" 
+              action="Hospital_System.action_hospital_nurse" 
+              sequence="4"/>
+
+    
+    <menuitem id="menu_patient" 
+              name="Patient" 
+              parent="menu_hospital_management" 
+              action="Hospital_System.action_hospital_patient" 
+              sequence="5"/>
+
+    
+    <menuitem id="menu_appointments" 
+              name="Appointments" 
+              parent="menu_hospital_management" 
+              action="Hospital_System.action_hospital_appointment" 
+              sequence="6"/>
+
+    
+    <menuitem id="menu_room" 
+              name="Rooms" 
+              parent="menu_hospital_management" 
+              action="action_hospital_room" 
+              sequence="7"/>
+
+    
+    <menuitem id="menu_treatment" 
+              name="Treatments" 
+              parent="menu_hospital_management" 
+              action="action_hospital_treatment" 
+              sequence="8"/>
+
+    
+    <menuitem id="menu_prescription" 
+              name="Prescriptions" 
+              parent="menu_hospital_management" 
+              action="action_hospital_prescription" 
+              sequence="9"/>
+</odoo>

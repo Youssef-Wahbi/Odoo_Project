@@ -1,0 +1,7 @@
+<odoo>
+    <template id="my_report_template">
+        <t t-name="my_module.my_report_template">
+            <!-- Report template content -->
+        </t>
+    </template>
+</odoo>

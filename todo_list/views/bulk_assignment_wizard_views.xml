@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="view_bulk_assignment_wizard_form" model="ir.ui.view">
+        <field name="name">bulk.task.assignment.wizard.form</field>
+        <field name="model">bulk.task.assignment.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Bulk Task Assignment">
+                <sheet>
+                    <group>
+                        <field name="employee_id" domain="[('is_active', '=', True)]"/>
+                        <field name="task_ids" readonly="1"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_assign_tasks" type="object" string="Assign Tasks" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+   
+    <record id="action_bulk_assignment_wizard" model="ir.actions.act_window">
+        <field name="name">Bulk Assign Tasks</field>
+        <field name="res_model">bulk.task.assignment.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_todo_task"/>
+        <field name="binding_view_types">list</field>
+    </record>
+</odoo> 

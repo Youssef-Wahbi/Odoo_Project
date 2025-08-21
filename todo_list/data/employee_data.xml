@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="todo_employee_john" model="todo.employee">
+        <field name="name">John Doe</field>
+        <field name="employee_code">EMP/0001</field>
+        <field name="email">john.doe@example.com</field>
+        <field name="phone">+1234567890</field>
+        <field name="department">it</field>
+        <field name="position">senior</field>
+        <field name="hire_date">2023-01-01</field>
+        <field name="salary">5000</field>
+        <field name="is_active">True</field>
+    </record>
+    <record id="todo_employee_jane" model="todo.employee">
+        <field name="name">Jane Smith</field>
+        <field name="employee_code">EMP/0002</field>
+        <field name="email">jane.smith@example.com</field>
+        <field name="phone">+1987654321</field>
+        <field name="department">hr</field>
+        <field name="position">junior</field>
+        <field name="hire_date">2023-02-01</field>
+        <field name="salary">3500</field>
+        <field name="is_active">True</field>
+    </record>
+</odoo>

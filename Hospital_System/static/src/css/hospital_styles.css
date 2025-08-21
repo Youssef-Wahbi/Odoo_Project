@@ -1,0 +1,59 @@
+/* Hospital Management Custom Styles */
+.o_form_view .o_form_sheet_bg {
+    background: #f8fafd;
+}
+.o_form_view .o_form_sheet {
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border: 1px solid #e0e6ed;
+}
+.o_form_view .o_form_label {
+    color: #2a3f54;
+    font-weight: 600;
+}
+.o_form_view .o_field_widget.o_field_char input {
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid #bfc9d4;
+}
+.o_form_view .o_field_widget.o_field_selection select {
+    background: #f0f4f8;
+    border-radius: 5px;
+}
+.o_form_view .o_field_widget.o_field_date input {
+    background: #f0f4f8;
+    border-radius: 5px;
+}
+
+/* Tree (List) View Custom Styles */
+.o_list_view table.o_list_table {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    border: 1px solid #e0e6ed;
+    overflow: hidden;
+}
+.o_list_view thead th {
+    background: linear-gradient(90deg, #e0eafc 0%, #cfdef3 100%);
+    color: #1a237e;
+    font-weight: 700;
+    border-bottom: 2px solid #90caf9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(44, 62, 80, 0.07);
+    font-size: 14px;
+    padding: 10px 14px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+.o_list_view tbody tr {
+    transition: background 0.2s;
+}
+.o_list_view tbody tr:hover {
+    background: #e6f7ff;
+}
+.o_list_view td.o_data_cell {
+    padding: 8px 12px;
+    border-bottom: 1px solid #f0f4f8;
+}

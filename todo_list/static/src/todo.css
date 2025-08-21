@@ -1,0 +1,57 @@
+.header_custom table thead > tr > th {
+    background-color: #7BD3EA !important;
+    color: #ffffff !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border-bottom: 2px solid #5092a2 !important;
+}
+
+
+.header_custom table thead > tr > th:nth-child(2) {
+    width: 250px !important;
+}
+
+.header_custom {
+  padding: 10px;
+}
+
+.header_custom table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.header_custom thead > tr > th {
+  background-color: #3182ce; /* blue */
+  color: white;
+  padding: 12px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 2px solid #2b6cb0;
+}
+
+.header_custom tbody tr:nth-child(odd) {
+  background-color: #f7fafc;
+}
+
+.header_custom tbody tr:nth-child(even) {
+  background-color: #edf2f7;
+}
+
+.header_custom tbody tr:hover {
+  background-color: #e2e8f0;
+  cursor: pointer;
+}
+
+
+.header_custom td {
+  padding: 10px;
+  color: #2d3748;
+  font-size: 13px;
+  border-bottom: 1px solid #e2e8f0;
+} 

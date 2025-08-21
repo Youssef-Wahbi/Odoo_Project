@@ -1,0 +1,90 @@
+<odoo>
+
+    <record id="renter_view_tree" model="ir.ui.view">
+        <field name="name">Renter tree</field>
+        <field name="model">renter</field>
+        <field name="arch" type="xml">
+            <tree class="header_custom">
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="id_number"/>
+                
+                <field name="property_id"/>
+                
+                
+                <field name="average_daily_rent"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="renter_view_form" model="ir.ui.view">
+        <field name="name">Renter form</field>
+        <field name="model">renter</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    
+                    <group>
+                        <group string="Contact Information">
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="id_number"/>
+                            
+                        </group>
+                        
+                        <group string="Additional Information">
+                            
+                            <field name="property_id" domain="[('renter_id', '=', False)]"/>
+                           
+                            
+                        
+                            <field name="property_ref"/>
+                            <field name="average_daily_rent"/>
+                            <field name="rental_start_date"/>
+                            <field name="rental_end_date"/>
+                           
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Address">
+                            <field name="address"/>
+                        </page>
+                        
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                        
+
+                        
+                    </notebook>
+                </sheet>
+                
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="renter_action" model="ir.actions.act_window">
+        <field name="name">Renters</field>
+        <field name="res_model">renter</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="renter_menu_item"
+        name="Renters"
+        parent="configration_menu"
+        action="renter_action"
+        sequence="10"
+    />
+
+</odoo> 

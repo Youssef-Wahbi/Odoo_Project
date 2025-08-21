@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="property_comparison_wizard_form" model="ir.ui.view">
+        <field name="name">Property Comparison Wizard Form</field>
+        <field name="model">property.comparison.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Property Comparison">
+                <sheet>
+                    <group>
+                        <field name="property_ids" widget="many2many_tags"/>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Comparison Table">
+                            <div class="table-responsive">
+                                <field name="property_ids" widget="many2many" options="{'no_create': True}">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="ref"/>
+                                        <field name="expected_price"/>
+                                        <field name="selling_price"/>
+                                        <field name="bedrooms"/>
+                                        <field name="living_area"/>
+                                        <field name="garden"/>
+                                        <field name="garden_area"/>
+                                        <field name="state"/>
+                                        <field name="expected_selling_date"/>
+                                        <field name="owner_id"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+                <footer>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo> 

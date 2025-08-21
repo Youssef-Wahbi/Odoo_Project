@@ -1,0 +1,71 @@
+<odoo>
+    <!-- Report Template -->
+    <template id="report_todo_task_document">
+        <t t-call="web.external_layout">
+            <t t-foreach="docs" t-as="doc">
+                <main>
+                    <div class="page">
+                        <h2>To-Do Task Report</h2>
+                        <p><strong>Task Name:</strong> <t t-esc="doc.name"/></p>
+                        <p><strong>Assigned To:</strong> <t t-esc="doc.assign_to.name or 'Not Assigned'"/></p>
+                        <p><strong>Status:</strong> <t t-esc="doc.status or ''"/></p>
+                        <p><strong>Due Date:</strong> <t t-esc="doc.due_date or ''"/></p>
+                        <p><strong>Estimated Time:</strong> <t t-esc="doc.estimated_time or ''"/> hours</p>
+
+                        <h4>Timesheets:</h4>
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Description</th>
+                                    <th>Time Spent</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.timesheet_ids" t-as="line">
+                                    <tr>
+                                        <td><t t-esc="line.user_id.name or ''"/></td>
+                                        <td><t t-esc="line.description or ''"/></td>
+                                        <td><t t-esc="line.time_spent or 0"/> h</td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </t>
+        </t>
+    </template>
+
+    <!-- Report Action -->
+    <record id="action_report_todo_task" model="ir.actions.report">
+        <field name="name">Print Task</field>
+        <field name="model">todo.task</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">todo_list.report_todo_task_document</field>
+        <field name="binding_model_id" ref="model_todo_task"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'Task - %s' % (object.name)</field>
+    </record>
+
+
+
+    <!-- QWeb Template -->
+    <!-- <template id="report_todo_task_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="task">
+                <div class="page">
+                    <h2>Task: <t t-esc="task.name"/></h2>
+                    <p><strong>Description:</strong> <t t-esc="task.description or ''"/></p>
+                    <p><strong>Assigned To:</strong> <t t-esc="task.user_id.name or 'Not Assigned'"/></p>
+                    <p><strong>Due Date:</strong> <t t-esc="task.due_date or ''"/></p>
+                    <p><strong>Status:</strong> <t t-esc="task.state or ''"/></p>
+                </div>
+            </t>
+        </t>
+    </template> -->
+
+   
+
+
+</odoo>

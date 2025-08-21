@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="ListViewAction">
+        <div class="simple-listview">
+            <div class="header-section">
+                <h1>Property List</h1>
+                <button class="create-btn" t-on-click="createRecord">Create New Property</button>
+            </div>
+            
+            <div t-if="state.properties.length === 0" class="no-data">
+                <p>No properties found</p>
+            </div>
+            
+            <div t-else="" class="table-container">
+                <table class="property-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Expected Price</th>
+                            <th>State</th>
+                            <th>Bedrooms</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="state.properties" t-as="property" t-key="property.id">
+                            <td t-esc="property.name"/>
+                            <td t-esc="'$' + (property.expected_price || 0)"/>
+                            <td t-esc="property.state"/>
+                            <td t-esc="property.bedrooms"/>
+                            <td>
+                                <button class="delete-btn" t-on-click="deleteRecord" t-att-data-id="property.id">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </t>
+</templates> 

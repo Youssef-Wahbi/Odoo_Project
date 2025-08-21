@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hospital_room_tree" model="ir.ui.view">
+        <field name="name">hospital.room.tree</field>
+        <field name="model">hospital.room</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="room_type"/>
+                <field name="capacity"/>
+                <field name="is_available"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_room_form" model="ir.ui.view">
+        <field name="name">hospital.room.form</field>
+        <field name="model">hospital.room</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="is_available"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Room: <field name="name"/></h1>
+                        <h3><field name="room_type"/></h3>
+                    </div>
+                    <group col="2">
+                        <group string="Room Info">
+                            <field name="capacity"/>
+                            <field name="is_available"/>
+                        </group>
+                        <group string="Notes">
+                            <field name="notes"/>
+                        </group>
+                    </group>
+                    <group string="Patients">
+                        <field name="patient_ids" context="{'form_view_ref':'view_patient_form'}">
+                            <tree>
+                                <field name="name"/>
+                                <field name="age"/>
+                                <field name="gender"/>
+                                <field name="doctor_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_room" model="ir.actions.act_window">
+        <field name="name">Rooms</field>
+        <field name="res_model">hospital.room</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

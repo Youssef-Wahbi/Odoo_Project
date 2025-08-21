@@ -1,0 +1,81 @@
+<odoo>
+    <record id="view_appointment_tree" model="ir.ui.view">
+        <field name="name">appointment.tree</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="reason"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="nurse_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_appointment_form" model="ir.ui.view">
+        <field name="name">appointment.form</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <div name="button_box">
+                    <button name="action_open_patient" type="object" string="Patient" icon="fa-user" invisible="not patient_id"/>
+                    <button name="action_open_doctor" type="object" string="Doctor" icon="fa-user-md" invisible="not doctor_id"/>
+                </div>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Patient: <field name="patient_id"/></h1>
+                        
+                    </div>
+                    <group col="2">
+                        <group string="Appointment Info">
+                            <field name="date"/>
+                            <field name="reason"/>
+                        </group>
+                        <group string="Medical Staff">
+                            <field name="doctor_id"/>
+                            <field name="nurse_id" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_hospital_appointment" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">tree,form,calendar</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first appointment!
+            </p>
+        </field>
+    </record>
+
+    <!-- Calendar view for appointments -->
+    <record id="view_appointment_calendar" model="ir.ui.view">
+        <field name="name">appointment.calendar</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Appointments" date_start="date" color="doctor_id">
+                <field name="reason"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="nurse_id"/>
+                <field name="state"/>
+            </calendar>
+        </field>
+    </record>
+</odoo>

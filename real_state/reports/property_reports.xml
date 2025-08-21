@@ -1,0 +1,400 @@
+<odoo>
+    <!-- Report Action -->
+    <record id="property_report_action" model="ir.actions.report">
+        <field name="name">Property Report</field>
+        <field name="model">property</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">real_state.property_report_template</field>
+        <field name="binding_model_id" ref="real_state.model_property"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'Property Report - %s' % (object.name)</field>
+    </record>
+
+    
+    <template id="property_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="prop">
+                <div class="page">
+                    
+                    <div class="report-header">
+                        <div class="header-content">
+                            <h1 class="report-title">Property Report</h1>
+                            <div class="property-basic-info">
+                                <h2 class="property-name"><t t-esc="prop.name"/></h2>
+                                <p class="property-description"><t t-esc="prop.description"/></p>
+                            </div>
+                        </div>
+                        <div class="header-logo">
+                            <div class="logo-placeholder">REAL ESTATE</div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="section">
+                        <h3 class="section-title">Property Details</h3>
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <span class="detail-label">Expected Selling Date:</span>
+                                <span class="detail-value"><t t-esc="prop.expected_selling_date"/></span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Bedrooms:</span>
+                                <span class="detail-value"><t t-esc="prop.bedrooms"/></span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Living Area:</span>
+                                <span class="detail-value"><t t-esc="prop.living_area"/> m²</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Garden:</span>
+                                <span class="detail-value"><t t-esc="prop.garden and 'Yes' or 'No'"/></span>
+                            </div>
+                            <div class="detail-item" t-if="prop.garden">
+                                <span class="detail-label">Garden Area:</span>
+                                <span class="detail-value"><t t-esc="prop.garden_area"/> m²</span>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                    <div class="section">
+                        <h3 class="section-title">Financial Information</h3>
+                        <div class="financial-grid">
+                            <div class="financial-item expected">
+                                <span class="financial-label">Expected Price:</span>
+                                <span class="financial-value expected-price">€<t t-esc="prop.expected_price"/></span>
+                            </div>
+                            <div class="financial-item selling" t-if="prop.selling_price">
+                                <span class="financial-label">Selling Price:</span>
+                                <span class="financial-value selling-price">€<t t-esc="prop.selling_price"/></span>
+                            </div>
+                            <div class="financial-item difference" t-if="prop.difference">
+                                <span class="financial-label">Difference:</span>
+                                <span class="financial-value difference-value" t-attf-class="prop.difference >= 0 and 'positive' or 'negative'">
+                                    €<t t-esc="prop.difference"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                    <div class="section">
+                        <h3 class="section-title">Owner Information</h3>
+                        <div class="owner-info">
+                            <div class="owner-detail">
+                                <span class="owner-label">Owner Name:</span>
+                                <span class="owner-value"><t t-esc="prop.owner_id.name"/></span>
+                            </div>
+                            <div class="owner-detail">
+                                <span class="owner-label">Address:</span>
+                                <span class="owner-value"><t t-esc="prop.owner_address"/></span>
+                            </div>
+                            <div class="owner-detail">
+                                <span class="owner-label">Phone:</span>
+                                <span class="owner-value"><t t-esc="prop.owner_phone"/></span>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                    <div class="section" t-if="prop.bedroom_line_ids">
+                        <h3 class="section-title">Bedroom Details</h3>
+                        <table class="bedroom-table">
+                            <thead>
+                                <tr>
+                                    <th class="table-header">Area (m²)</th>
+                                    <th class="table-header">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="prop.bedroom_line_ids" t-as="line" class="table-row">
+                                    <td class="table-cell"><t t-esc="line.area"/></td>
+                                    <td class="table-cell"><t t-esc="line.description"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    
+                    <div class="report-footer">
+                        <p class="footer-text">Report generated on <t t-esc="context_timestamp(datetime.datetime.now()).strftime('%B %d, %Y')"/></p>
+                    </div>
+                </div>
+            </t>
+        </t>
+
+       
+        <style>
+            /* Import custom fonts */
+            @import url('/real_state/static/src/font.css');
+
+            /* Page layout */
+            .page {
+                padding: 30px;
+                font-family: 'BitcountPropSingle', 'Segoe UI', sans-serif;
+                color: #2d3748;
+                line-height: 1.6;
+            }
+
+            /* Header styling */
+            .report-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 40px;
+                padding-bottom: 20px;
+                border-bottom: 3px solid #3182ce;
+            }
+
+            .header-content {
+                flex: 1;
+            }
+
+            .report-title {
+                font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+                font-size: 2.5rem;
+                font-weight: 900;
+                color: #1a202c;
+                margin: 0 0 10px 0;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+            }
+
+            .property-name {
+                font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: #2d3748;
+                margin: 0 0 8px 0;
+            }
+
+            .property-description {
+                font-family: 'BitcountPropSingle-Cursive', 'Segoe UI', sans-serif;
+                font-size: 1.1rem;
+                font-weight: 500;
+                color: #718096;
+                font-style: italic;
+                margin: 0;
+            }
+
+            .header-logo {
+                text-align: right;
+            }
+
+            .logo-placeholder {
+                font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #3182ce;
+                text-transform: uppercase;
+                letter-spacing: 0.2em;
+                padding: 10px 20px;
+                border: 2px solid #3182ce;
+                border-radius: 5px;
+            }
+
+            /* Section styling */
+            .section {
+                margin-bottom: 30px;
+                padding: 20px;
+                background-color: #f7fafc;
+                border-radius: 8px;
+                border-left: 4px solid #3182ce;
+            }
+
+            .section-title {
+                font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: #2d3748;
+                margin: 0 0 20px 0;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+
+            /* Details grid */
+            .details-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 15px;
+            }
+
+            .detail-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+            .detail-label {
+                font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: #4a5568;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+
+            .detail-value {
+                font-family: 'BitcountPropSingle', 'Segoe UI', sans-serif;
+                font-size: 1rem;
+                font-weight: 500;
+                color: #2d3748;
+            }
+
+            /* Financial information */
+            .financial-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .financial-item {
+                text-align: center;
+                padding: 20px;
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            .financial-label {
+                display: block;
+                font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+                font-size: 0.85rem;
+                font-weight: 600;
+                color: #4a5568;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                margin-bottom: 8px;
+            }
+
+            .financial-value {
+                display: block;
+                font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+                font-size: 1.5rem;
+                font-weight: 700;
+            }
+
+            .expected-price {
+                color: #3182ce;
+            }
+
+            .selling-price {
+                color: #38a169;
+            }
+
+            .difference-value.positive {
+                color: #38a169;
+            }
+
+            .difference-value.negative {
+                color: #e53e3e;
+            }
+
+            /* Owner information */
+            .owner-info {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 15px;
+            }
+
+            .owner-detail {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .owner-label {
+                font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+                font-size: 0.85rem;
+                font-weight: 600;
+                color: #4a5568;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+
+            .owner-value {
+                font-family: 'BitcountPropSingle', 'Segoe UI', sans-serif;
+                font-size: 1rem;
+                font-weight: 500;
+                color: #2d3748;
+            }
+
+            /* Table styling */
+            .bedroom-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 15px;
+                background-color: white;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            .table-header {
+                font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+                font-size: 0.9rem;
+                font-weight: 700;
+                color: white;
+                background-color: #3182ce;
+                padding: 12px;
+                text-align: left;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+
+            .table-row:nth-child(even) {
+                background-color: #f7fafc;
+            }
+
+            .table-row:hover {
+                background-color: #e2e8f0;
+            }
+
+            .table-cell {
+                font-family: 'BitcountPropSingle', 'Segoe UI', sans-serif;
+                font-size: 0.9rem;
+                padding: 12px;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+            /* Footer */
+            .report-footer {
+                margin-top: 40px;
+                padding-top: 20px;
+                border-top: 2px solid #e2e8f0;
+                text-align: center;
+            }
+
+            .footer-text {
+                font-family: 'BitcountPropSingle', 'Segoe UI', sans-serif;
+                font-size: 0.8rem;
+                color: #718096;
+                font-style: italic;
+            }
+
+            /* Print styles */
+            @media print {
+                .page {
+                    padding: 20px;
+                }
+                
+                .section {
+                    background-color: white !important;
+                    border: 1px solid #e2e8f0 !important;
+                }
+                
+                .financial-item {
+                    box-shadow: none !important;
+                    border: 1px solid #e2e8f0 !important;
+                }
+                
+                .bedroom-table {
+                    box-shadow: none !important;
+                    border: 1px solid #e2e8f0 !important;
+                }
+            }
+        </style>
+    </template>
+</odoo>

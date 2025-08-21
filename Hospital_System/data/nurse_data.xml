@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+        <record id="nurse_1" model="hospital.nurse">
+            <field name="name">Nurse Emma White</field>
+            <field name="phone">5551112222</field>
+            <field name="email">emma.white@example.com</field>
+            
+            <field name="active">1</field>
+        </record>
+        <record id="nurse_2" model="hospital.nurse">
+            <field name="name">Nurse Olivia Green</field>
+            <field name="phone">5553334444</field>
+            <field name="email">olivia.green@example.com</field>
+            
+            <field name="active">1</field>
+        </record>
+        <record id="nurse_3" model="hospital.nurse">
+            <field name="name">Nurse Liam Black</field>
+            <field name="phone">5555556666</field>
+            <field name="email">liam.black@example.com</field>
+            
+            <field name="active">1</field>
+        </record>
+    </data>
+</odoo>

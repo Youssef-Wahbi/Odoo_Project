@@ -1,0 +1,301 @@
+/* Real Estate Module Custom Fonts */
+
+/* BitcountPropSingle Cursive Font Family */
+@font-face {
+    font-family: 'BitcountPropSingle-Cursive';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle_Cursive-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BitcountPropSingle-Cursive';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle_Cursive-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BitcountPropSingle-Cursive';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle_Cursive-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BitcountPropSingle-Cursive';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle_Cursive-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BitcountPropSingle-Cursive';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle_Cursive-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BitcountPropSingle-Cursive';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle_Cursive-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* BitcountPropSingle Roman Font Family */
+@font-face {
+    font-family: 'BitcountPropSingle-Roman';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle_Roman-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BitcountPropSingle-Roman';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle_Roman-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BitcountPropSingle-Roman';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle_Roman-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BitcountPropSingle-Roman';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle_Roman-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BitcountPropSingle-Roman';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle_Roman-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BitcountPropSingle-Roman';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle_Roman-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* BitcountPropSingle Base Font Family */
+@font-face {
+    font-family: 'BitcountPropSingle';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BitcountPropSingle';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BitcountPropSingle';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BitcountPropSingle';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BitcountPropSingle';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BitcountPropSingle';
+    src: url('/real_state/static/src/fonts/BitcountPropSingle-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Typography Classes for Real Estate Module */
+
+/* Main heading styles */
+.real-estate-heading {
+    font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+    font-weight: 700;
+    color: #2d3748;
+    line-height: 1.2;
+}
+
+.real-estate-heading-primary {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #1a202c;
+}
+
+.real-estate-heading-secondary {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2d3748;
+}
+
+.real-estate-heading-tertiary {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+/* Property card titles */
+.property-title {
+    font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+/* Property details text */
+.property-details {
+    font-family: 'BitcountPropSingle', 'Segoe UI', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #4a5568;
+    line-height: 1.5;
+}
+
+/* Price styling */
+.property-price {
+    font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #38a169;
+}
+
+/* Address styling */
+.property-address {
+    font-family: 'BitcountPropSingle-Cursive', 'Segoe UI', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #718096;
+    font-style: italic;
+}
+
+/* Form labels */
+.real-estate-label {
+    font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #2d3748;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Button text */
+.real-estate-btn {
+    font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Table headers */
+.real-estate-table-header {
+    font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Navigation and menu items */
+.real-estate-nav {
+    font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+}
+
+/* Status indicators */
+.property-status {
+    font-family: 'BitcountPropSingle-Roman', 'Segoe UI', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.property-status-available {
+    color: #38a169;
+}
+
+.property-status-sold {
+    color: #e53e3e;
+}
+
+.property-status-pending {
+    color: #d69e2e;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+    .real-estate-heading-primary {
+        font-size: 2rem;
+    }
+    
+    .real-estate-heading-secondary {
+        font-size: 1.5rem;
+    }
+    
+    .real-estate-heading-tertiary {
+        font-size: 1.25rem;
+    }
+    
+    .property-title {
+        font-size: 1.125rem;
+    }
+    
+    .property-price {
+        font-size: 1.25rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .real-estate-heading,
+    .property-title,
+    .property-price {
+        color: #000 !important;
+    }
+    
+    .property-details,
+    .property-address {
+        color: #333 !important;
+    }
+}

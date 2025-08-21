@@ -1,0 +1,342 @@
+<odoo>
+
+    <record id="property_view_tree" model="ir.ui.view">
+        <field name="name">Property tree</field>
+        <field name="model">property</field>
+        <field name="arch" type="xml">
+
+                        <tree multi_edit="1" class="header_custom" decoration-danger="is_late == True">
+
+                         <header>
+                                <button name="action_create_invoice"
+                                string="Create Invoice"
+                                 type="object"
+                                 class="btn-primary"/>
+
+                                 <button name="action_create_sale_order"
+                                        string="Create Sales Order"
+                                        type="object"
+                                        class="btn-primary"/>
+            </header>
+                
+                                <field name="image" widget="image" class="oe_avatar"/>
+                <field name="name"/>
+                <button name="action_duplicate_property" type="object" string="Duplicate" icon="fa-copy" class="btn-sm btn-warning"/>
+                <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-primary="state == 'pending'" decoration-success="state == 'sold'" decoration-danger="state == 'closed'"/>
+                
+
+
+                <field name="description"/>
+                <field name="agent_id"/>
+                <field name="renter_id"/>
+                <!-- <field name="rental_start_date" invisible="not renter_id"/>
+                <field name="rental_end_date" invisible="not renter_id"/> -->
+                <field name="daily_rent_price" invisible="not renter_id"/>
+                <field name="is_late" invisible="1"/>
+                <field name="expected_selling_date"/>
+                <field name="expected_price"/>
+                <field name="selling_price"/>
+                
+                
+                <field name="garden" widget="boolean_toggle"/>
+                <field name="garden_area"/>
+               
+                <field name="bedrooms" widget="integer"/>
+                <field name="living_area" widget="integer"/>
+            </tree>
+        </field>
+
+    </record>
+
+
+    <record id="property_view_form" model="ir.ui.view">
+        <field name="name">Property form</field>
+        <field name="model">property</field>
+        <field name="arch" type="xml">
+
+            <form>
+
+              <header>
+                <button name="action_create_invoice"
+                        string="Create Invoice"
+                        type="object"
+                        class="btn-primary"/>
+            </header>
+
+                <field name="active" invisible="1"/>
+                
+               
+                <sheet>
+                    <widget name="web_ribbon" invisible="active" title="Archived" bg_color="text-bg-danger"/>
+                    <widget name="web_ribbon" invisible="state != 'sold'" title="Sold" bg_color="text-bg-success"/>
+                    
+                    <header>
+                        
+                        
+                        <field name="state" widget="statusbar"/>
+                        <button name="action_draft" type="object" string="Set To Draft"
+                                class="btn-primary" invisible="state == 'draft' or state == 'closed'"/>
+                        <button name="action_pending" type="object" string="Mark as Pending"
+                                class="btn-secondary" invisible="state != 'draft' or state == 'closed'"/>
+                        <button name="action_sold" type="object" string="Mark as Sold"
+                                class="btn-success" invisible="state != 'pending' or state == 'closed'"/>
+
+                    </header>
+                    <div name="button_box">
+                        <button name="open_owner" type="object" string="Owner" icon="fa-user" invisible="not owner_id"/>
+                    </div>
+
+                                         <div class="oe_title">
+                         <h1><field name="ref"/></h1>
+                         <h3> <field name="name" readonly="state=='closed'"/></h3>
+                     </div>
+                     
+                     <div class="oe_image" style="text-align: center; margin: 20px 0;">
+                         <field name="image" widget="image" class="oe_avatar" style="max-width: 300px; max-height: 200px;"/>
+                     </div>
+                     
+
+
+
+                    <group col="2">
+                        <group string="general info">
+
+
+                            <field name="description"/>
+                            <field name="is_late" invisible="1" readonly="state=='closed'"/>
+                            <field name="expected_selling_date" readonly="state=='closed'"/>
+                            <field name="expected_price" readonly="state=='closed'"/>
+                            <field name="selling_price" readonly="state=='closed'"/>
+                            <field name="difference" readonly="1"/>
+                            <field name="bedrooms" readonly="state=='closed'"/>
+                            <field name="living_area"/>
+                            <field name="garden"/>
+                            <field name="garden_area"/>
+                            <field name="create_time" readonly="1"/>
+                            <field name="next_time" readonly="1"/>
+                            
+
+
+                        </group>
+
+
+                        <group string="additional info">
+
+                            
+                            <field name="owner_id"/>
+                            <field name="owner_address"/>
+                            <field name="owner_phone"/>
+                            <field name="agent_id"/>
+                            <field name="renter_id" domain="[('property_id', '=', False)]"/>
+                            <field name="renter_phone" invisible="not renter_id"/>
+                            <field name="renter_email" invisible="not renter_id"/>
+                            <field name="renter_address" invisible="not renter_id"/>
+                            <field name="rental_start_date" invisible="not renter_id"/>
+                            <field name="rental_end_date" invisible="not renter_id"/>
+                            <field name="daily_rent_price" invisible="not renter_id"/>
+                            
+
+                        </group>
+                    </group>
+
+                                         <notebook>
+                         <page string="Rooms">
+                             <field name="bedroom_line_ids" context="{'default_room_type': 'other'}">
+                                 <tree editable="bottom">
+                                     <field name="property_id" />
+                                     <field name="room_type" />
+                                     <field name="area"/>
+                                     <field name="description"/>
+                                 </tree>
+                             </field>
+                         </page>
+                         
+                         <!-- <page string="Photos">
+                             <field name="photo_ids" widget="many2many_binary" options="{'accepted_file_extensions': 'image/*'}">
+                                 <tree>
+                                     <field name="name"/>
+                                     <field name="mimetype"/>
+                                     <field name="url" widget="image" class="oe_avatar"/>
+                                 </tree>
+                             </field>
+                         </page>
+
+                        <page string="Living Rooms">
+                            <field name="living_room_line_ids" context="{'default_room_type': 'living'}">
+                                <tree editable="bottom">
+                                    <field name="property_id" invisible="1"/>
+                                    <field name="room_type" readonly="1"/>
+                                    <field name="area"/>
+                                    <field name="description"/>
+                                </tree>
+                            </field>
+                        </page> -->
+
+                    </notebook>
+                </sheet>
+
+                <div class=" oe_chatter">
+
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+
+                </div>
+            </form>
+        </field>
+
+    </record>
+
+
+
+    <record id="property_view_search" model="ir.ui.view">
+        <field name="name">Property search</field>
+        <field name="model">property</field>
+        <field name="arch" type="xml">
+
+            <search>
+                <field name="name"/>
+                <field name="ref"/>
+                <field name="owner_id"/>
+                <field name="agent_id"/>
+                <field name="renter_id"/>
+                <field name="rental_start_date"/>
+                <field name="rental_end_date"/>
+                <field name="daily_rent_price"/>
+                <field name="garden"/>
+                <field name="garage"/>
+                <field name="state"/>
+                <field name="expected_selling_date"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="garden_area"/>
+                
+                <filter string="Available" name="available" domain="[('state', 'in', ['draft', 'pending'])]"/>
+                <filter string="Sold" name="sold" domain="[('state', '=', 'sold')]"/>
+                <filter string="Closed" name="closed" domain="[('state', '=', 'closed')]"/>
+                <filter string="With Garden" name="with_garden" domain="[('garden', '=', True)]"/>
+                <filter string="With Garage" name="with_garage" domain="[('garage', '=', True)]"/>
+                <filter string="Late Properties" name="late_properties" domain="[('is_late', '=', True)]"/>
+                <filter string="With Renter" name="with_renter" domain="[('renter_id', '!=', False)]"/>
+                <filter string="Rented Properties" name="rented_properties" domain="[('renter_id', '!=', False)]"/>
+                <filter string="Available for Rent" name="available_for_rent" domain="[('renter_id', '=', False)]"/>
+                <filter string="Active Rentals" name="active_rentals" domain="[('renter_id', '!=', False), ('rental_end_date', '>=', context_today())]"/>
+                <filter string="Expired Rentals" name="expired_rentals" domain="[('renter_id', '!=', False), ('rental_end_date', '&lt;', context_today())]"/>
+                
+                <separator/>
+                <filter string="Price Range" name="price_range" context="{'group_by': 'expected_price'}"/>
+                <filter string="Bedrooms" name="bedrooms_group" context="{'group_by': 'bedrooms'}"/>
+                <filter string="Status" name="status_group" context="{'group_by': 'state'}"/>
+                <filter string="Owner" name="owner_group" context="{'group_by': 'owner_id'}"/>
+                <filter string="Renter" name="renter_group" context="{'group_by': 'renter_id'}"/>
+                <filter string="Rental Start Date" name="rental_start_group" context="{'group_by': 'rental_start_date'}"/>
+                <filter string="Rental End Date" name="rental_end_group" context="{'group_by': 'rental_end_date'}"/>
+                
+                <group expand="0" string="Group By">
+                    <filter string="Status" name="group_by_state" context="{'group_by': 'state'}"/>
+                    <filter string="Owner" name="group_by_owner" context="{'group_by': 'owner_id'}"/>
+                    <filter string="Renter" name="group_by_renter" context="{'group_by': 'renter_id'}"/>
+                    <filter string="Rental Start Date" name="group_by_rental_start" context="{'group_by': 'rental_start_date'}"/>
+                    <filter string="Rental End Date" name="group_by_rental_end" context="{'group_by': 'rental_end_date'}"/>
+                    <filter string="Expected Price" name="group_by_price" context="{'group_by': 'expected_price'}"/>
+                    <filter string="Bedrooms" name="group_by_bedrooms" context="{'group_by': 'bedrooms'}"/>
+                    <filter string="Garden" name="group_by_garden" context="{'group_by': 'garden'}"/>
+                </group>
+            </search>
+
+        </field>
+
+    </record>
+
+
+    <record id="property_action" model="ir.actions.act_window">
+        <field name="name">Properties</field>
+        <field name="res_model">property</field>
+        <field name="view_mode">tree,form</field>
+        
+    </record>
+
+    <record id="property_owl_action" model="ir.actions.client">
+        <field name="name">Simple List View</field>
+        <field name="tag">real_state.listview_action</field>
+    </record>
+
+    <record id="property_closed_server_action" model="ir.actions.server">
+        <field name="name">Property Closed Server Action</field>
+        <field name="model_id" ref="model_property"/>
+        <field name="binding_model_id" ref="model_property"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.action_closed()
+        </field>
+    </record>
+
+    <record id="check_selling_date_cron" model="ir.cron">
+        <field name="name">Property: Check selling date</field>
+        <field name="model_id" ref="real_state.model_property"/>
+        <field name="state">code</field>
+        <field name="code">model.check_expected_selling_date()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="property_state_wizard_server_action" model="ir.actions.server">
+    <field name="name">Reopen Closed Property</field>
+    <field name="model_id" ref="model_property"/>
+    <field name="binding_model_id" ref="model_property"/>
+    <field name="state">code</field>
+    <field name="code">
+        action = records.open_state_wizard()
+    </field>
+</record>
+
+    <record id="generate_excel_report_server_action" model="ir.actions.server">
+        <field name="name">Generate Excel Report</field>
+        <field name="model_id" ref="model_property"/>
+        <field name="binding_model_id" ref="model_property"/>
+        <field name="binding_type">action</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.generate_excel_report()
+        </field>
+    </record>
+
+    <record id="compare_properties_server_action" model="ir.actions.server">
+        <field name="name">Compare Properties</field>
+        <field name="model_id" ref="model_property"/>
+        <field name="binding_model_id" ref="model_property"/>
+        <field name="binding_type">action</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.action_compare_properties()
+        </field>
+    </record>
+
+
+
+
+
+
+
+
+
+    <menuitem
+
+            id="properties_menu_item"
+            name="Properties"
+            parent="properties_menu"
+            action="property_action"
+
+    />
+
+    <menuitem
+            id="properties_owl_menu_item"
+            name="Properties Owl"
+            parent="properties_menu"
+            action="property_owl_action"
+            sequence="10"
+    />
+</odoo>
+

@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record id="doctor_1" model="hospital.doctor">
+            <field name="name">Dr. John Smith</field>
+            <field name="specialty">cardiology</field>
+            <field name="phone">1234567890</field>
+            <field name="email">john.smith@example.com</field>
+            <field name="hire_date">2020-01-15</field>
+            
+        </record>
+        <record id="doctor_2" model="hospital.doctor">
+            <field name="name">Dr. Alice Brown</field>
+            <field name="specialty">neurology</field>
+            <field name="phone">2345678901</field>
+            <field name="email">alice.brown@example.com</field>
+            <field name="hire_date">2021-03-10</field>
+            
+        </record>
+        <record id="doctor_3" model="hospital.doctor">
+            <field name="name">Dr. Michael Lee</field>
+            <field name="specialty">pediatrics</field>
+            <field name="phone">3456789012</field>
+            <field name="email">michael.lee@example.com</field>
+            <field name="hire_date">2022-07-20</field>
+            
+        </record>
+    </data>
+</odoo>

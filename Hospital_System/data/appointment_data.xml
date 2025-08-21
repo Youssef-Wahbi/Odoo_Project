@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+        <record id="appointment_1" model="hospital.appointment">
+            <field name="doctor_id" ref="doctor_1"/>
+            <field name="patient_id" ref="patient_1"/>
+            <field name="date">2025-08-20 09:00:00</field>
+            <field name="reason">General Consultation</field>
+            <field name="state">draft</field>
+        </record>
+        <record id="appointment_2" model="hospital.appointment">
+            <field name="doctor_id" ref="doctor_2"/>
+            <field name="patient_id" ref="patient_2"/>
+            <field name="date">2025-08-21 10:30:00</field>
+            <field name="reason">Follow-up Visit</field>
+            <field name="state">draft</field>
+        </record>
+        <record id="appointment_3" model="hospital.appointment">
+            <field name="doctor_id" ref="doctor_3"/>
+            <field name="patient_id" ref="patient_3"/>
+            <field name="date">2025-08-22 14:00:00</field>
+            <field name="reason">Specialist Consultation</field>
+            <field name="state">draft</field>
+        </record>
+    </data>
+</odoo>

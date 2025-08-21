@@ -1,0 +1,243 @@
+
+
+.header_custom {
+  padding: 10px;
+  text-align: center !important;
+}
+
+/* New modern header styling */
+.header_custom thead > tr > th {
+  background: #e3f2fd !important;
+  color: #1565c0 !important;
+  padding: 12px 15px !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  border: none !important;
+  letter-spacing: 0.8px !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+}
+
+.header_custom thead > tr > th:hover {
+  background: #bbdefb !important;
+  color: #0d47a1 !important;
+}
+
+.header_custom thead > tr > th:after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, #2196f3, #1976d2) !important;
+  transform: scaleX(0) !important;
+  transition: transform 0.3s ease !important;
+}
+
+.header_custom thead > tr > th:hover:after {
+  transform: scaleX(1) !important;
+}
+
+/* Ensure the entire tree view container is centered */
+.header_custom .o_list_view {
+  text-align: center !important;
+}
+
+.header_custom table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  font-family: "Segoe UI", sans-serif;
+  transition: all 0.3s ease !important;
+}
+
+.header_custom table:hover {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15) !important;
+}
+
+
+
+.header_custom tbody tr:nth-child(odd) {
+  background-color: #f7fafc;
+}
+
+.header_custom tbody tr:nth-child(even) {
+  background-color: #edf2f7;
+}
+
+.header_custom tbody tr:hover {
+  background-color: #e2e8f0;
+  cursor: pointer;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+
+.header_custom td {
+  padding: 10px;
+  color: #2d3748;
+  font-size: 13px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/* Center buttons in tree view with animations */
+.header_custom .o_list_button {
+  text-align: center !important;
+  margin: 0 auto !important;
+  transition: all 0.3s ease !important;
+  border-radius: 6px !important;
+  padding: 6px 12px !important;
+}
+
+.header_custom .o_list_button:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+}
+
+/* Status indicators with animations */
+.header_custom .o_field_widget[data-fieldname="state"] {
+  position: relative !important;
+  transition: all 0.3s ease !important;
+}
+
+.header_custom .o_field_widget[data-fieldname="state"]:before {
+  content: "●" !important;
+  margin-right: 5px !important;
+  font-size: 12px !important;
+  animation: pulse 2s infinite !important;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Center all content in tree view cells */
+.header_custom tbody td {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/* Ensure proper alignment for all elements */
+.header_custom .o_field_widget {
+  text-align: center !important;
+}
+
+/* General styling for all views in the module */
+.o_list_view {
+  font-family: "Segoe UI", sans-serif !important;
+}
+
+/* Enhanced table styling for all views */
+.o_list_view table {
+  border-radius: 0 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.o_list_view table:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15) !important;
+}
+
+/* Row hover effects for all views */
+.o_list_view tbody tr:hover {
+  background-color: #f8f9fa !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Form view styling */
+.o_form_view {
+  font-family: "Segoe UI", sans-serif !important;
+}
+
+/* Form sheet styling */
+.o_form_view .o_form_sheet {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1) !important;
+  transition: all 0.3s ease !important;
+  background: white !important;
+}
+
+.o_form_view .o_form_sheet:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15) !important;
+}
+
+/* Form field styling */
+.o_form_view .o_field_widget {
+  transition: all 0.3s ease !important;
+}
+
+.o_form_view .o_field_widget:focus-within {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+
+/* Form button styling */
+.o_form_view .o_form_button {
+  transition: all 0.3s ease !important;
+  border-radius: 6px !important;
+}
+
+.o_form_view .o_form_button:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+}
+
+/* Form group styling */
+.o_form_view .o_group {
+  border-radius: 6px !important;
+  transition: all 0.3s ease !important;
+}
+
+.o_form_view .o_group:hover {
+  background-color: #f8f9fa !important;
+}
+
+/* Form header styling */
+.o_form_view .o_form_statusbar {
+  border-radius: 6px 6px 0 0 !important;
+  background: transparent !important;
+  color: inherit !important;
+}
+
+/* Form title styling */
+.o_form_view .o_form_sheet .oe_title h1 {
+  color: #2d3748 !important;
+  font-weight: 600 !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1) !important;
+}
+
+
+
+/* Rule 5: Data fieldname specific - THIS IS THE WORKING RULE */
+.header_custom .o_field_widget[data-fieldname="image"] img {
+  max-width: 70px !important;
+  max-height: 70px !important;
+  width: 70px !important;
+  height: 70px !important;
+  object-fit: cover !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+
+.header_custom .o_field_widget[data-fieldname="image"] img:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
+  border-radius: 12px !important;
+}
+
+
+
+

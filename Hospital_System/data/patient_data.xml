@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+        <record id="patient_1" model="hospital.patient">
+            <field name="name">Sophia Turner</field>
+            <field name="gender">female</field>
+            <field name="age">35</field>
+            <field name="phone">7778889999</field>
+            <field name="email">sophia.turner@example.com</field>
+        </record>
+        <record id="patient_2" model="hospital.patient">
+            <field name="name">James Wilson</field>
+            <field name="gender">male</field>
+            <field name="age">40</field>
+            <field name="phone">8889990000</field>
+            <field name="email">james.wilson@example.com</field>
+        </record>
+        <record id="patient_3" model="hospital.patient">
+            <field name="name">Mia Davis</field>
+            <field name="gender">female</field>
+            <field name="age">25</field>
+            <field name="phone">9990001111</field>
+            <field name="email">mia.davis@example.com</field>
+        </record>
+    </data>
+</odoo>
