@@ -45,7 +45,7 @@
                     </group>
                     <notebook>
                         <page string="Doctors">
-                            <field name="doctor_ids" widget="many2many_tags">
+                            <field name="doctor_ids" context="{'form_view_ref':'view_doctor_form'}" widget="many2many_tags">
                                 <tree>
                                     <field name="name"/>
                                     <field name="specialty"/>

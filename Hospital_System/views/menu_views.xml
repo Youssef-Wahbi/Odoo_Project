@@ -2,6 +2,7 @@
     <!-- Top level menu -->
     <menuitem id="menu_hospital_management" 
               name="Hospital Management" 
+             
               sequence="1"/>
 
     <!-- Medical Staff menu and sub-menus -->

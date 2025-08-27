@@ -16,15 +16,14 @@
         <field name="model">hospital.treatment</field>
         <field name="arch" type="xml">
             <form>
-                <div name="button_box">
-                    <button name="action_open_patient" type="object" string="Patient" icon="fa-user" invisible="not patient_id"/>
-                    <button name="action_open_doctor" type="object" string="Doctor" icon="fa-user-md" invisible="not doctor_id"/>
-                </div>
+                
                 <header>
                     <field name="active" invisible="1"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done" clickable="1"/>
                     <button name="action_confirm" type="object" string="Confirm" class="btn-primary" invisible="state != 'draft'"/>
                     <button name="action_done" type="object" string="Mark as Done" class="btn-success" invisible="state != 'confirmed'"/>
+                    <button name="action_open_patient" type="object" string="Patient" icon="fa-user" invisible="not patient_id"/>
+                    <button name="action_open_doctor" type="object" string="Doctor" icon="fa-user-md" invisible="not doctor_id"/>
                 </header>
                 <sheet>
                     <div class="oe_title">

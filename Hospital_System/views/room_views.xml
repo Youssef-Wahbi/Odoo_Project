@@ -21,6 +21,7 @@
                     <field name="is_available"/>
                 </header>
                 <sheet>
+                    
                     <div class="oe_title">
                         <h1>Room: <field name="name"/></h1>
                         <h3><field name="room_type"/></h3>

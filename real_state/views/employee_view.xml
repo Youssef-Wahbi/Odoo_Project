@@ -32,14 +32,14 @@
                         </h1>
                     </div>
                     <group>
-                        <group>
+                        <group string="general info">
                             <field name="employee_id"/>
                             <field name="position"/>
                             <field name="department"/>
                             <field name="hire_date"/>
                             <field name="is_active"/>
                         </group>
-                        <group>
+                        <group string="Extras">
                             <field name="email"/>
                             <field name="phone"/>
                             <field name="salary"/>

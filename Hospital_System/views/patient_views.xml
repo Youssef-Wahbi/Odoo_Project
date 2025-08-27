@@ -23,10 +23,9 @@
                 <header>
                     <field name="doctor_id"/>
                     <button name="action_create_invoice" type="object" string="Create Invoice" class="btn-primary"/>
-                </header>
-                <div name="button_box">
                     <button name="action_open_doctor" type="object" string="Doctor" icon="fa-user-md" invisible="not doctor_id"/>
-                </div>
+                </header>
+                
                 <sheet>
                     <widget name="web_ribbon" invisible="not is_vip" title="VIP" bg_color="text-bg-warning"/>
                     <div class="oe_title">

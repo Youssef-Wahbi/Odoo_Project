@@ -32,10 +32,15 @@ class Patient(models.Model):
     def action_create_invoice(self):
         move_obj = self.env['account.move']
         partner_obj = self.env['res.partner']
+        product_obj = self.env['product.product']
         # Find or create a default partner
         partner = partner_obj.search([('name', '=', 'Hospital Patient')], limit=1)
         if not partner:
             partner = partner_obj.create({'name': 'Hospital Patient'})
+        # Find or create a default product
+        product = product_obj.search([('name', '=', 'Patient Service')], limit=1)
+        if not product:
+            product = product_obj.create({'name': 'Patient Service', 'type': 'service'})
         for patient in self:
             invoice = move_obj.create({
                 'move_type': 'out_invoice',
@@ -46,6 +51,7 @@ class Patient(models.Model):
                         'name': f'Patient Bill for {patient.name}',
                         'quantity': 1,
                         'price_unit': patient.bill or 0.0,
+                        'product_id': product.id,
                     })
                 ],
             })

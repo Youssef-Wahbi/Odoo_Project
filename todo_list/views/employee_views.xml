@@ -35,13 +35,13 @@
                         </h1>
                     </div>
                     <group>
-                        <group>
+                        <group string="general info">
                             <field name="employee_code"/>
                             <field name="email"/>
                             <field name="phone"/>
                             <field name="is_active"/>
                         </group>
-                        <group>
+                        <group string="Extras">
                             <field name="department"/>
                             <field name="position"/>
                             <field name="hire_date"/>

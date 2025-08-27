@@ -20,12 +20,11 @@
         <field name="arch" type="xml">
             <form>
                 <header>
+                <button name="action_open_patient" type="object" string="Patient" icon="fa-user" invisible="not patient_id"/>
+                    <button name="action_open_doctor" type="object" string="Doctor" icon="fa-user-md" invisible="not doctor_id"/>
                     <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
                 </header>
-                <div name="button_box">
-                    <button name="action_open_patient" type="object" string="Patient" icon="fa-user" invisible="not patient_id"/>
-                    <button name="action_open_doctor" type="object" string="Doctor" icon="fa-user-md" invisible="not doctor_id"/>
-                </div>
+                
                 <sheet>
                     <div class="oe_title">
                         <h1>Patient: <field name="patient_id"/></h1>
