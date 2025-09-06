@@ -87,6 +87,7 @@
                             <field name="phone"/>
                             <field name="email"/>
                             <field name="hire_date"/>
+                            <field name="user_id"/>
                             
                         </group>
                         <group string="Extras">

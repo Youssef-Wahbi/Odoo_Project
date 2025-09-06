@@ -32,6 +32,9 @@ class Doctor(models.Model):
     patient_count = fields.Integer(string='Patients', compute='_compute_patient_count', store=False)
     patient_list = fields.Char(string='Patient List', compute='_compute_patient_list', store=False)
 
+    partner_id = fields.Many2one('res.partner', string="Related Partner")
+    user_id = fields.Many2one('res.users', string="Related User")
+
     def _compute_patient_count(self):
         for doctor in self:
             doctor.patient_count = len(doctor.patient_ids)

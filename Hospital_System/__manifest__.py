@@ -6,7 +6,7 @@
     'author': 'Youssef Wahbi',
     'website': 'http://www.example.com',
     'category': 'Healthcare',
-    'depends': ['base','mail','account_accountant','stock','purchase'],
+    'depends': ['base','mail','account_accountant','stock','purchase','portal','website'],
     'data': [
         'security/ir.model.access.csv',
         'views/doctor_views.xml',
@@ -18,6 +18,7 @@
         'views/prescription_views.xml',
         'views/menu_views.xml',
         'views/account_move_line_inherit_amount.xml',
+        'views/portal_templates.xml',
         'data/doctor_data.xml',
         'data/nurse_data.xml',
         'data/patient_data.xml',

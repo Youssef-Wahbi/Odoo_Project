@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <template id="portal_my_patient" name="Patient Portal">
+    <t t-call="website.layout">
+      <div class="container mt-5">
+        <h2 class="mb-4 text-center">👤 My Patient Information</h2>
+
+        <t t-if="patient">
+          <!-- Patient Info Card -->
+          <div class="card shadow-lg border-0 mb-4">
+            <div class="card-body">
+              <h4 class="card-title">
+                <i class="fa fa-user me-2"></i>
+                <t t-esc="patient.name"/>
+                <t t-if="patient.is_vip">
+                  <span class="badge bg-warning text-dark ms-2">⭐ VIP</span>
+                </t>
+              </h4>
+              <p class="card-text"><strong>Age:</strong> <t t-esc="patient.age"/></p>
+              <p class="card-text"><strong>Gender:</strong> <t t-esc="patient.gender"/></p>
+              <p class="card-text"><strong>Phone:</strong> <t t-esc="patient.phone"/></p>
+              <p class="card-text"><strong>Email:</strong> <t t-esc="patient.email"/></p>
+              <p class="card-text"><strong>Address:</strong> <t t-esc="patient.address"/></p>
+              <p class="card-text"><strong>Assigned Doctor:</strong> <t t-esc="patient.doctor_id.name"/></p>
+              <p class="card-text"><strong>Room:</strong> <t t-esc="patient.room_id.name"/></p>
+              <p class="card-text"><strong>Bill:</strong> $<t t-esc="patient.bill"/></p>
+            </div>
+          </div>
+
+          <!-- Treatments Table -->
+          <h3 class="mt-4">💉 Treatments</h3>
+          <t t-if="patient.treatment_ids">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Treatment</th>
+                  <th>Description</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <t t-foreach="patient.treatment_ids" t-as="treat">
+                  <tr>
+                    <td><t t-esc="treat.name"/></td>
+                    <td><t t-esc="treat.description"/></td>
+                    <td><t t-esc="treat.date"/></td>
+                  </tr>
+                </t>
+              </tbody>
+            </table>
+          </t>
+          <t t-else="">
+            <p>No treatments recorded.</p>
+          </t>
+
+          <!-- Prescriptions Table -->
+          <h3 class="mt-4">💊 Prescriptions</h3>
+          <t t-if="patient.prescription_ids">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Medicine</th>
+                  <th>Dosage</th>
+                  <th>Instructions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <t t-foreach="patient.prescription_ids" t-as="presc">
+                  <tr>
+                    <td><t t-esc="presc.medicine_id.name"/></td>
+                    <td><t t-esc="presc.dosage"/></td>
+                    <td><t t-esc="presc.instructions"/></td>
+                  </tr>
+                </t>
+              </tbody>
+            </table>
+          </t>
+          <t t-else="">
+            <p>No prescriptions available.</p>
+          </t>
+
+        </t>
+        <t t-else="">
+          <div class="alert alert-warning">
+            No patient record linked to your account.
+          </div>
+        </t>
+      </div>
+    </t>
+  </template>
+
+
+   <template id="portal_my_doctor" name="Doctor Portal">
+  <t t-call="website.layout">
+    <div class="container mt-5">
+      <h2 class="mb-4 text-center">👨‍⚕️ Doctor Portal</h2>
+
+      <t t-if="doctor">
+        <div class="card shadow-lg border-0 mb-4">
+          <div class="row g-0">
+            <!-- Doctor Image -->
+            <div class="col-md-3 text-center p-3">
+              <img t-if="doctor.image_1920"
+                   t-att-src="'data:image/png;base64,%s' % doctor.image_1920.decode()"
+                   class="img-fluid rounded-circle border shadow-sm"
+                   style="max-width: 150px;" />
+              <div t-if="not doctor.image_1920" class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width:150px;height:150px;">
+                <i class="fa fa-user-md fa-3x text-secondary"></i>
+              </div>
+            </div>
+
+            <!-- Doctor Info -->
+            <div class="col-md-9">
+              <div class="card-body">
+                <h4 class="card-title">
+                  <i class="fa fa-user-md me-2"></i>
+                  <t t-esc="doctor.name"/>
+                  <t t-if="not doctor.active">
+                    <span class="badge bg-danger ms-2">Inactive</span>
+                  </t>
+                </h4>
+                <p class="card-text"><strong>Specialty:</strong> <t t-esc="doctor.specialty"/></p>
+                <p class="card-text"><strong>Email:</strong> <t t-esc="doctor.email"/></p>
+                <p class="card-text"><strong>Phone:</strong> <t t-esc="doctor.phone"/></p>
+                <p class="card-text"><strong>Hire Date:</strong> <t t-esc="doctor.hire_date"/></p>
+                <p class="card-text"><strong>Nurse:</strong> <t t-esc="doctor.nurse_id.name"/></p>
+                <p class="card-text"><strong>Salary:</strong> $<t t-esc="doctor.salary"/></p>
+                <p class="card-text"><strong>Total Patients:</strong> <t t-esc="doctor.patient_count"/></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Patients Section -->
+        <h3 class="mt-4">🧑‍🤝‍🧑 My Patients</h3>
+        <t t-if="patients">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Phone</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <t t-foreach="patients" t-as="patient">
+                <tr>
+                  <td><t t-esc="patient.name"/></td>
+                  <td><t t-esc="patient.age"/></td>
+                  <td><t t-esc="patient.gender"/></td>
+                  <td><t t-esc="patient.phone"/></td>
+                  <td><t t-esc="patient.email"/></td>
+                </tr>
+              </t>
+            </tbody>
+          </table>
+        </t>
+        <t t-else="">
+          <div class="alert alert-info">No patients assigned yet.</div>
+        </t>
+
+      </t>
+      <t t-else="">
+        <div class="alert alert-warning">
+          No doctor record linked to your account.
+        </div>
+      </t>
+    </div>
+  </t>
+</template>
+
+</odoo>

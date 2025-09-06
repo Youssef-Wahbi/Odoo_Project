@@ -9,6 +9,7 @@ class Patient(models.Model):
     _description = 'Patient'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
+
     name = fields.Char(string='Name', required=True)
     age = fields.Integer(string='Age')
     gender = fields.Selection([
@@ -26,6 +27,10 @@ class Patient(models.Model):
 
     treatment_ids = fields.One2many('hospital.treatment', 'patient_id', string='Treatments')
     prescription_ids = fields.One2many('hospital.prescription', 'patient_id', string='Prescriptions')
+
+    partner_id = fields.Many2one('res.partner', string="Related Partner")
+    user_id = fields.Many2one('res.users', string="Related User")
+
 
 
 

@@ -37,6 +37,7 @@
                             <field name="phone"/>
                             <field name="email"/>
                             <field name="address"/>
+                            <field name="user_id"/>
                         </group>
                         <group string="Medical Info">
                             <field name="age"/>
